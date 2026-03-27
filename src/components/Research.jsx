@@ -19,6 +19,13 @@ const G = {
 const PUBS = [
   {
     title:
+      "Hardware-Efficient Hyperglycemic Event Prediction: A Quantized Tiny 1D-CNN for Edge-Based Continuous Glucose Monitoring",
+    authors: "Talha Alam, H. Ali",
+    venue: " IEEE Transactions on Biomedical Circuits and Systems (*Under Review*)",
+    year: 2026,
+  },
+  {
+    title:
       "Stride Prediction and Prefetch Buffering for PicoRV32 RISC-V Processor",
     authors: "N. Chalane, M. M. Khan, Talha Alam",
     venue: "ICCIIoT 2025 — 6th Int. Conf. on Computational Intelligence & IoT",

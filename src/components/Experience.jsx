@@ -59,6 +59,13 @@ const EXP = [
     desc: "Hands-on experience across P&I 1, P&I 2, SCARDA, and Operations at one of the world's largest dams.",
     type: "industry",
   },
+  {
+    role: "Project Manager",
+    org: "Government Post Graduate College, Abbottabad, Pakistan",
+    period: "Nov 2023 – Dec 2023",
+    desc: "Designed and implemented an IoT-based device for a research project at the Government Post Graduate College’s Botany Department, enabling real-time environmental monitoring and data collection for scientific analysis. ",
+    type: "Research",
+  },
 ];
 function Experience() {
   const TC = { industry: G.cyan, research: G.purple, leadership: G.green };

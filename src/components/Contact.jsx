@@ -137,15 +137,15 @@ function Contact() {
             </div>
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
               {[
-                { l: "LinkedIn", c: "#0ea5e9" },
-                { l: "GitHub", c: "#6e5494" },
-                { l: "Google Scholar", c: G.cyan },
-                { l: "ResearchGate", c: "#00ccbb" },
-                { l: "ORCID", c: "#a6ce39" },
-              ].map(({ l, c }) => (
+                { l: "LinkedIn", href: "https://www.linkedin.com/in/talhaalam-e-e/" ,c: "#0ea5e9" },
+                { l: "GitHub", href: "https://github.com/talha-ee", c: "#549492" },
+                { l: "Google Scholar", href: "https://scholar.google.com/citations?user=Ue74-00AAAAJ&hl=en", c: G.cyan },
+                { l: "ResearchGate", href: "https://www.researchgate.net/profile/Talha-Alam-3?ev=hdr_xprf", c: "#00ccbb" },
+                { l: "ORCID", href: "https://orcid.org/0009-0007-6627-4601", c: "#a6ce39" },
+            ].map(({ l, href, c }) => (
                 <a
                   key={l}
-                  href="#"
+                  href={href}
                   style={{
                     padding: "6px 12px",
                     background: `${c}1a`,

@@ -85,7 +85,7 @@ function Navbar() {
             cursor: "pointer",
           }}
         >
-          TA<span style={{ color: G.purple }}>.</span>DEV
+          Talha<span style={{ color: G.purple }}> Alam</span>
         </div>
         <div style={{ display: "flex", gap: 18 }}>
           {links.map(([id, l]) => (

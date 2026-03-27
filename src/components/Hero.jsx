@@ -69,7 +69,7 @@ function Hero() {
             opacity: 0.85,
           }}
         >
-          ◈ &nbsp;AI HARDWARE ENGINEER &nbsp;◈
+          ◈ &nbsp;Electronic Engineer &nbsp;◈
         </div>
         <h1
           style={{

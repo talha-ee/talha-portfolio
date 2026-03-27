@@ -35,15 +35,24 @@ const PROJECTS = [
   },
   {
     id: 2,
-    title: "Tiny 1D-CNN Hyperglycemia Predictor",
-    desc: "FPGA Artix-7 implementation of INT8-quantized Tiny 1D-CNN for event-level hyperglycemia spike prediction on 6.2M-sample DiaData dataset.",
-    tech: ["Artix-7", "Vivado HLS", "INT8", "PyTorch", "RTL"],
-    cat: "FPGA",
+    title: "High-Performance AI Accelerator ASIC for CGM Applications (RTL-to-GDSII)",
+    desc: "Verilog, SkyWater 130nm PDK, Librelane, Yosys, OpenROAD, KLayout, Area: 21.79 mm² (core), Total Power: 0.216 mW, Timing Closure: 0 setup/hold violations @ 35ns clock ",
+    tech: ["Verilog", "GDSII", "SkyWater 130nm PDK", "Librelane", "Yosys", "OpenROAD", "KLayout","INT8", "PyTorch", "RTL"],
+    cat: "ASIC/AI",
     img: "/assets/placeholders/project2.png",
     featured: true,
   },
   {
     id: 3,
+    title: "Streaming Line-Buffer and Dataflow Optimized Tiny 1D-CNN Accelerator for Real-Time Glucose Prediction",
+    desc: "FPGA (Artix-7), Vitis HLS, Vivado, Micro-Architectural Optimizations: Zero DSP Usage, Loop Unrolling, Pipelining, Sliding Window Buffer, 3x Latency Improvement, 21% Power Reduction",
+    tech: ["Artix-7", "Vivado", "Vitis", "INT8", "PyTorch", "RTL"],
+    cat: "FPGA/AI",
+    img: "/assets/placeholders/project2.png",
+    featured: true,
+  },
+  {
+    id: 4,
     title: "PicoRV32 Stride Prediction & Prefetch",
     desc: "Implemented stride prediction and prefetch buffering for PicoRV32 RISC-V processor. Published at ICCIIoT 2025.",
     tech: ["RISC-V", "PicoRV32", "Verilog", "HDL", "FPGA"],
@@ -52,7 +61,7 @@ const PROJECTS = [
     featured: false,
   },
   {
-    id: 4,
+    id: 5,
     title: "CanSat Weather Monitoring Satellite",
     desc: "Design, development & deployment of open-source nano-satellite for weather monitoring. Presented at National CanSat Competition, IST Islamabad 2024.",
     tech: ["LoRa", "C/C++", "RF", "IoT", "Nano-Sat"],
@@ -61,7 +70,7 @@ const PROJECTS = [
     featured: true,
   },
   {
-    id: 5,
+    id: 6,
     title: "Battery-less NFC Plant Sensor",
     desc: "NFC/RFID biodegradable flexible sensor for wireless plant monitoring — zero battery needed. Cloud-connected precision agriculture solution.",
     tech: ["NFC", "RFID", "Biodegradable", "Wireless", "IoT"],
@@ -70,7 +79,7 @@ const PROJECTS = [
     featured: false,
   },
   {
-    id: 6,
+    id: 7,
     title: "High-Gain CubeSat Dipole Antenna",
     desc: "High-gain dipole tape antenna for IoT PocketQube/CubeSat satellite applications. Designed and simulated in HFSS. Published at ICETECC 25'.",
     tech: ["HFSS", "RF", "CubeSat", "MATLAB", "Antenna"],
@@ -79,7 +88,7 @@ const PROJECTS = [
     featured: false,
   },
   {
-    id: 7,
+    id: 8,
     title: "BLDC Motor IoT Monitor",
     desc: "ESP-enabled comprehensive IoT solution for real-time BLDC motor monitoring with web dashboard and cloud data handling.",
     tech: ["ESP32", "C/C++", "HTML", "IoT", "Cloud"],
@@ -88,7 +97,7 @@ const PROJECTS = [
     featured: false,
   },
   {
-    id: 8,
+    id: 9,
     title: "EV Battery Management System",
     desc: "BMS for Lithium-ion cells targeting EV applications with IoT wireless monitoring, SOC estimation, and cloud analytics dashboard.",
     tech: ["C/C++", "IoT", "Embedded", "Wireless", "Cloud"],
