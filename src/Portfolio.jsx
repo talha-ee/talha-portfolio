@@ -85,7 +85,77 @@ function ProjectGlyph({ kind }) {
   )
 }
 
-function ProjectCard({ project, lead, onOpen }) {
+function FigureArt({ kind }) {
+  if (kind === 'accel') return (
+    <svg className="case-figure-svg" viewBox="0 0 920 440" role="img" aria-label="AccelClosure prompt to GDSII flow diagram">
+      <defs><marker id="flow-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8z" fill="currentColor" /></marker><linearGradient id="flow-glow" x1="0" x2="1"><stop stopColor="#6fe2c4" /><stop offset="1" stopColor="#f0a36c" /></linearGradient></defs>
+      <path className="figure-line" d="M116 185h92m116 0h92m116 0h92m116 0h92" markerEnd="url(#flow-arrow)" />
+      {[['01', 'Prompt', 'natural language'], ['02', 'RTL', 'array + wrapper'], ['03', 'Verify', 'exact + suites'], ['04', 'Synthesize', 'timing + PPA'], ['05', 'Place / route', 'open SKY130'], ['06', 'GDSII', 'layout evidence']].map(([number, title, detail], index) => <g key={number} transform={`translate(${28 + index * 148} 120)`}><rect className={index === 5 ? 'figure-node figure-node-final' : 'figure-node'} width="116" height="132" rx="10" /><text className="figure-index" x="16" y="25">{number}</text><circle className="figure-node-dot" cx="96" cy="24" r="4" /><text className="figure-title" x="16" y="64">{title}</text><text className="figure-detail" x="16" y="89">{detail}</text><text className="figure-detail" x="16" y="106">{index === 5 ? 'final artifact' : 'checkpoint'}</text></g>)}
+      <rect x="28" y="311" width="864" height="72" rx="8" className="figure-band" /><text className="figure-band-label" x="52" y="341">CLOSED 8 × 8 REFERENCE</text><text className="figure-band-value" x="52" y="365">208.95 MHz · 0.497935 mm² · 0.317 W · zero setup / hold / DRC</text><text className="figure-band-label" x="677" y="341">GDS SHA</text><text className="figure-band-value" x="677" y="365">cd7dc93c…</text>
+    </svg>
+  )
+  if (kind === 'gemmini') return (
+    <svg className="case-figure-svg" viewBox="0 0 920 440" role="img" aria-label="Gemmini systolic array and multiplier datapath diagram">
+      <defs><marker id="flow-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8z" fill="currentColor" /></marker></defs>
+      <g transform="translate(54 58)"><text className="figure-kicker" x="0" y="-18">SYSTOLIC ARRAY</text>{Array.from({ length: 64 }, (_, index) => <rect key={index} className={(index % 9 === 0 || index === 27 || index === 36) ? 'figure-cell figure-cell-hot' : 'figure-cell'} x={(index % 8) * 35} y={Math.floor(index / 8) * 35} width="24" height="24" rx="4" />)}<path className="figure-line" d="M10 302V286m0-252V18M10 18h274M10 302h274" markerEnd="url(#flow-arrow)" /></g>
+      <g transform="translate(414 82)"><text className="figure-kicker" x="0" y="-22">PE ARITHMETIC</text><rect className="figure-node" width="178" height="62" rx="9" /><text className="figure-title" x="22" y="27">INT8 operands</text><text className="figure-detail" x="22" y="46">signed a × b</text><path className="figure-line" d="M178 31h60" markerEnd="url(#flow-arrow)" /><rect className="figure-node" x="238" width="210" height="62" rx="9" /><text className="figure-title" x="260" y="27">Radix-4 Booth</text><text className="figure-detail" x="260" y="46">four partial products</text><path className="figure-line" d="M343 62v42" markerEnd="url(#flow-arrow)" /><rect className="figure-node" x="238" y="104" width="210" height="62" rx="9" /><text className="figure-title" x="260" y="131">3:2 / 4:2 tree</text><text className="figure-detail" x="260" y="150">four reduction stages</text><path className="figure-line" d="M343 166v42" markerEnd="url(#flow-arrow)" /><rect className="figure-node figure-node-final" x="238" y="208" width="210" height="62" rx="9" /><text className="figure-title" x="260" y="235">Kogge–Stone</text><text className="figure-detail" x="260" y="254">carry-propagate result</text></g>
+      <rect x="414" y="374" width="454" height="38" rx="8" className="figure-band" /><text className="figure-band-value" x="436" y="399">16×16 SKY130: −13.49% area · −15.49% cells</text>
+    </svg>
+  )
+  if (kind === 'nce') return (
+    <svg className="case-figure-svg" viewBox="0 0 920 440" role="img" aria-label="Eight lane mixed precision neural compute engine diagram">
+      <defs><marker id="flow-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8z" fill="currentColor" /></marker></defs>
+      <text className="figure-kicker" x="34" y="36">MIXED-PRECISION LANE FABRIC</text><rect className="figure-node" x="34" y="76" width="156" height="282" rx="12" /><text className="figure-title" x="58" y="117">AXI4-Lite</text><text className="figure-detail" x="58" y="140">control plane</text><text className="figure-detail" x="58" y="172">tensor SRAM</text><text className="figure-detail" x="58" y="198">status + DMA</text><path className="figure-line" d="M190 217h44" markerEnd="url(#flow-arrow)" />
+      {[['INT8 × 4', '#6fe2c4'], ['BF16 × 2', '#8cb9ad'], ['BF24', '#e4c290'], ['FP32 ACC', '#f0a36c']].map(([label, color], index) => <g key={label} transform={`translate(234 ${76 + index * 70})`}><rect className="figure-lane" width="346" height="48" rx="8" style={{ stroke: color }} /><circle cx="24" cy="24" r="6" fill={color} /><text className="figure-title" x="47" y="29">{label}</text><path className="figure-line" d="M150 24h152" markerEnd="url(#flow-arrow)" /></g>)}
+      <rect className="figure-node figure-node-final" x="620" y="76" width="262" height="282" rx="12" /><text className="figure-title" x="650" y="120">Systolic output</text><text className="figure-detail" x="650" y="148">GEMM / convolution</text><text className="figure-detail" x="650" y="181">8 lanes · packed input</text><text className="figure-detail" x="650" y="214">FP32 accumulation</text><path className="figure-line" d="M650 274h198" /><text className="figure-band-value" x="650" y="307">62 / 62 suites</text><text className="figure-detail" x="650" y="330">1,006 AXI transactions</text>
+    </svg>
+  )
+  if (kind === 'attention') return (
+    <svg className="case-figure-svg" viewBox="0 0 920 440" role="img" aria-label="INT4 transformer attention dataflow diagram">
+      <defs><marker id="flow-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8z" fill="currentColor" /></marker></defs>
+      <text className="figure-kicker" x="36" y="38">16 × 16 INT4 ATTENTION TILE</text><path className="figure-line" d="M148 194h54m146 0h54m146 0h54m146 0h54" markerEnd="url(#flow-arrow)" />
+      {[['Q · Kᵀ', 'INT4 GEMM'], ['scale', 'fixed-point'], ['softmax', 'exact verify'], ['P · V', 'INT4 GEMM'], ['MMIO', '8-bit wrapper']].map(([title, detail], index) => <g key={title} transform={`translate(${36 + index * 176} 132)`}><rect className={index === 2 ? 'figure-node figure-node-hot' : 'figure-node'} width="132" height="124" rx="10" /><text className="figure-title" x="18" y="48">{title}</text><text className="figure-detail" x="18" y="75">{detail}</text><text className="figure-index" x="18" y="103">0{index + 1}</text></g>)}
+      <rect x="36" y="314" width="848" height="68" rx="8" className="figure-band" /><text className="figure-band-label" x="58" y="341">FROZEN STANDALONE RUN</text><text className="figure-band-value" x="58" y="365">333.33 MHz · 286,546 cells · 1,201 cycles · 3.410 GMAC/s</text>
+    </svg>
+  )
+  if (kind === 'stream' || kind === 'fpga') return (
+    <svg className="case-figure-svg" viewBox="0 0 920 440" role="img" aria-label="Streaming line buffer and FPGA resource diagram">
+      <defs><marker id="flow-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8z" fill="currentColor" /></marker></defs>
+      <text className="figure-kicker" x="36" y="38">MODEL → WINDOW → PIPELINE → PREDICTION</text><path className="figure-line" d="M144 190h50m156 0h50m156 0h50m156 0h50" markerEnd="url(#flow-arrow)" />
+      {[['INT8 model', 'quantized'], ['line buffer', 'sliding window'], ['1D CNN', 'pipelined MAC'], ['PE stream', 'unrolled'], ['output', kind === 'fpga' ? 'Arty S7-35T' : 'real-time']].map(([title, detail], index) => <g key={title} transform={`translate(${36 + index * 176} 128)`}><rect className={index === 4 ? 'figure-node figure-node-final' : 'figure-node'} width="128" height="124" rx="10" /><text className="figure-title" x="16" y="48">{title}</text><text className="figure-detail" x="16" y="76">{detail}</text><text className="figure-index" x="16" y="103">0{index + 1}</text></g>)}
+      <rect x="36" y="314" width="848" height="68" rx="8" className="figure-band" /><text className="figure-band-value" x="58" y="342">{kind === 'fpga' ? '3,953 LUTs · 4,506 FFs · 42 DSPs · 33 BRAMs' : '3× lower latency · 0 DSP blocks · 21% lower reported power'}</text><text className="figure-band-label" x="58" y="366">IMPLEMENTATION SNAPSHOT</text>
+    </svg>
+  )
+  return (
+    <svg className="case-figure-svg" viewBox="0 0 920 440" role="img" aria-label="ASIC physical design floorplan and signoff checks">
+      <text className="figure-kicker" x="36" y="38">RTL → SYNTHESIS → PLACE / ROUTE → CHECKS</text><rect className="figure-floorplan" x="64" y="76" width="374" height="274" rx="8" /><rect className="figure-macro" x="92" y="108" width="116" height="82" rx="4" /><rect className="figure-macro" x="230" y="108" width="178" height="36" rx="4" /><rect className="figure-macro" x="230" y="162" width="80" height="156" rx="4" /><rect className="figure-macro" x="326" y="162" width="82" height="156" rx="4" /><path className="figure-route" d="M208 149h22M310 144v18M310 318v-18M208 231h22" /><text className="figure-title" x="92" y="335">core / macros / routes</text><path className="figure-line" d="M474 212h64" markerEnd="url(#flow-arrow)" /><g transform="translate(568 92)">{[['Timing', '0 setup / hold'], ['Physical', '0 DRC / antenna'], ['Layout', kind === 'physical' ? 'GDSII evidence' : 'open flow']].map(([title, detail], index) => <g key={title} transform={`translate(0 ${index * 78})`}><rect className="figure-node figure-node-final" width="292" height="56" rx="8" /><circle className="figure-node-dot" cx="24" cy="28" r="5" /><text className="figure-title" x="44" y="25">{title}</text><text className="figure-detail" x="44" y="43">{detail}</text></g>)}</g>
+    </svg>
+  )
+}
+
+function ProjectPage({ project }) {
+  const nextProject = projects[(projects.findIndex((item) => item.id === project.id) + 1) % projects.length]
+  const hasImage = Boolean(project.figureImage)
+  useEffect(() => {
+    document.title = `${project.title} · Talha Alam`
+    return () => { document.title = 'Talha Alam · AI Hardware' }
+  }, [project.title])
+  return (
+    <div className="portfolio case-study-page" id="portfolio"><Navigation /><main>
+      <section className="case-hero shell"><a className="back-link" href="#work"><Arrow /> Back to selected systems</a><div className="case-hero-meta"><SectionLabel number={project.index}>{project.kind}</SectionLabel><span>{project.year}</span></div><div className="case-hero-grid"><div><h1>{project.title}</h1><p className="case-deck">{project.deck}</p><div className="tag-row">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></div><div className="case-hero-stat"><strong>{project.metric}</strong><span>{project.metricLabel}</span></div></div></section>
+      <section className="case-intro shell"><div><span className="note-label">The brief</span><p className="case-lede">{project.summary}</p></div><div><span className="note-label">What I built</span><p>{project.detail}</p></div></section>
+      <section className="case-figures shell"><div className="case-section-heading"><div><SectionLabel number="01">Figures & evidence</SectionLabel><h2>From architecture<br /><em>to physical proof.</em></h2></div><p>Each figure is scoped to the implementation record for this project. The visual explains the path; the metric keeps it honest.</p></div><div className="case-figure-grid"><figure className="case-figure case-figure-wide"><div className="case-figure-topline"><span>FIG. {project.index}A · SYSTEM VIEW</span><span>{project.visual === 'physical' ? 'PHYSICAL DESIGN' : 'ARCHITECTURE'}</span></div><FigureArt kind={project.visual} /><figcaption>{project.visual === 'accel' ? 'AccelClosure closes the loop from a natural-language request to a reproducible GDSII artifact.' : `A code-native schematic of the ${project.title.toLowerCase()} data path and its measured checkpoints.`}</figcaption></figure>{hasImage && <figure className="case-figure case-figure-image"><div className="case-figure-topline"><span>FIG. {project.index}B · LAYOUT RECORD</span><span>GDSII / KLAYOUT</span></div><img src={project.figureImage} alt="AccelClosure GDSII layout opened in KLayout" /><figcaption>Actual layout evidence from the AccelClosure project record. The screenshot shows the final Sky130HD array GDS in KLayout.</figcaption></figure>}<figure className="case-figure case-figure-metrics"><div className="case-figure-topline"><span>FIG. {project.index}{hasImage ? 'C' : 'B'} · IMPLEMENTATION RECORD</span><span>REPORTED CONFIGURATION</span></div><div className="case-stat-grid">{project.secondary.map(([value, label]) => <div key={label}><strong>{value}</strong><span>{label}</span></div>)}</div><div className="case-scope"><span className="note-label">Scope note</span><p>{project.note}</p></div></figure></div></section>
+      <section className="case-details shell"><div><SectionLabel number="02">Build note</SectionLabel><h2>Why this<br /><em>configuration.</em></h2></div><div className="case-detail-copy"><p>{project.detail}</p><div className="case-link-row">{project.links.map((link) => <External key={link.href} className="text-link" href={link.href}>{link.label}</External>)}<a className="text-link" href={`mailto:${profile.email}?subject=${encodeURIComponent(`Project discussion: ${project.title}`)}`}>Discuss this project <Arrow diagonal /></a></div></div></section>
+      <section className="case-next shell"><div><span className="note-label">Next system</span><h2>{nextProject.title}</h2><p>{nextProject.deck}</p></div><a className="button button-primary" href={projectPath(nextProject.id)}>Open next case <Arrow /></a></section>
+    </main><footer className="site-footer"><div className="shell footer-inner"><a className="wordmark" href="#top"><Mark compact /><span>talha alam<span className="wordmark-dot">.</span></span></a><span>Designed around the work · © {new Date().getFullYear()}</span><a href="#top">Back to top ↑</a></div></footer></div>
+  )
+}
+
+function projectPath(id) {
+  return `#/projects/${id}`
+}
+
+function ProjectCard({ project, lead }) {
   return (
     <article className={lead ? 'work-card work-card-lead' : 'work-card'}>
       <div className="work-card-art"><span className="art-index">{project.index} / {project.year}</span><ProjectGlyph kind={project.visual} /><span className="art-caption">{project.kind}</span></div>
@@ -95,31 +165,9 @@ function ProjectCard({ project, lead, onOpen }) {
         <p className="work-deck">{project.deck}</p>
         <p className="work-summary">{project.summary}</p>
         <div className="tag-row">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-        <div className="work-card-footer"><div className="primary-metric"><strong>{project.metric}</strong><span>{project.metricLabel}</span></div><button className="case-button" type="button" onClick={() => onOpen(project)}>Open case note <Arrow /></button></div>
+        <div className="work-card-footer"><div className="primary-metric"><strong>{project.metric}</strong><span>{project.metricLabel}</span></div><a className="case-button" href={projectPath(project.id)}>Open case study <Arrow /></a></div>
       </div>
     </article>
-  )
-}
-
-function CaseNote({ project, onClose }) {
-  useEffect(() => {
-    const closeOnEscape = (event) => { if (event.key === 'Escape') onClose() }
-    document.addEventListener('keydown', closeOnEscape)
-    const previousOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-    return () => { document.removeEventListener('keydown', closeOnEscape); document.body.style.overflow = previousOverflow }
-  }, [onClose])
-  return (
-    <div className="note-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) onClose() }}>
-      <section className="case-note" role="dialog" aria-modal="true" aria-labelledby="case-note-title">
-        <div className="note-header"><SectionLabel number={project.index}>{project.kind}</SectionLabel><button className="note-close" type="button" onClick={onClose}>Close <span aria-hidden="true">×</span></button></div>
-        <h2 id="case-note-title">{project.title}</h2>
-        <p className="note-lede">{project.deck}</p>
-        <div className="note-metric"><strong>{project.metric}</strong><span>{project.metricLabel}</span></div>
-        <div className="note-body"><div><span className="note-label">Build note</span><p>{project.detail}</p></div><div><span className="note-label">Evidence & scope</span><p>{project.note}</p><div className="note-stats">{project.secondary.map(([value, label]) => <div key={label}><strong>{value}</strong><span>{label}</span></div>)}</div></div></div>
-        <div className="note-footer">{project.links.map((link) => <External key={link.href} className="text-link" href={link.href}>{link.label}</External>)}<a className="text-link" href={`mailto:${profile.email}?subject=${encodeURIComponent(`Project discussion: ${project.title}`)}`}>Discuss this project <Arrow diagonal /></a></div>
-      </section>
-    </div>
   )
 }
 
@@ -141,7 +189,6 @@ function Hero() {
 
 function WorkSection() {
   const [filter, setFilter] = useState('All')
-  const [selected, setSelected] = useState(null)
   const [showArchive, setShowArchive] = useState(false)
   const filters = ['All', 'AI', 'ASIC', 'FPGA']
   const visibleProjects = projects.filter((project) => filter === 'All' || project.categories.includes(filter))
@@ -149,9 +196,8 @@ function WorkSection() {
     <section className="section shell work-section" id="work">
       <div className="section-heading"><div><SectionLabel number="01">Selected systems</SectionLabel><h2>Newest work first.<br /><em>Evidence beside the idea.</em></h2></div><p>Each case note keeps the scope visible: architecture, implementation flow, and the number that actually belongs to that configuration.</p></div>
       <div className="work-toolbar"><div className="filter-row" aria-label="Filter selected work">{filters.map((item) => <button key={item} type="button" className={filter === item ? 'filter-button is-active' : 'filter-button'} aria-pressed={filter === item} onClick={() => setFilter(item)}>{item === 'All' ? 'All systems' : item}</button>)}</div><span className="result-count">{visibleProjects.length.toString().padStart(2, '0')} / {projects.length.toString().padStart(2, '0')} projects</span></div>
-      <div className="work-list">{visibleProjects.map((project, index) => <ProjectCard key={project.id} project={project} lead={index === 0} onOpen={setSelected} />)}</div>
+      <div className="work-list">{visibleProjects.map((project, index) => <ProjectCard key={project.id} project={project} lead={index === 0} />)}</div>
       <div className="archive-panel"><div className="archive-heading"><div><SectionLabel number="01b">Earlier work</SectionLabel><h3>The rest of the lab notebook.</h3></div><button className="archive-button" type="button" onClick={() => setShowArchive((value) => !value)} aria-expanded={showArchive}>{showArchive ? 'Hide archive' : 'Open archive'}<span>{showArchive ? '−' : '+'}</span></button></div>{showArchive && <div className="archive-list">{archiveProjects.map((project) => <article key={project.title}><div className="archive-year">{project.year}</div><div className="archive-main"><div className="archive-meta"><span>{project.status}</span><span>↗</span></div><h4>{project.title}</h4><p>{project.description}</p><div className="tag-row">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></div></article>)}</div>}</div>
-      {selected && <CaseNote project={selected} onClose={() => setSelected(null)} />}
     </section>
   )
 }
@@ -184,8 +230,25 @@ function ContactSection() {
   )
 }
 
-export default function Portfolio() {
+function HomePage() {
   return (
     <div className="portfolio" id="portfolio"><a className="skip-link" href="#work">Skip to selected work</a><Navigation /><main><Hero /><div className="signal-strip"><div className="shell"><span>RTL DESIGN</span><span>LOW-PRECISION AI</span><span>FPGA SYSTEMS</span><span>RISC-V</span><span>RTL → GDSII</span></div></div><WorkSection /><ApproachSection /><ExperienceSection /><ResearchSection /><ContactSection /></main><footer className="site-footer"><div className="shell footer-inner"><a className="wordmark" href="#top"><Mark compact /><span>talha alam<span className="wordmark-dot">.</span></span></a><span>Designed around the work · © {new Date().getFullYear()}</span><a href="#top">Back to top ↑</a></div></footer></div>
   )
+}
+
+function routeProject() {
+  const match = window.location.hash.match(/^#\/projects\/([^/?]+)/)
+  if (!match) return null
+  return projects.find((project) => project.id === decodeURIComponent(match[1])) ?? null
+}
+
+export default function Portfolio() {
+  const [hash, setHash] = useState(() => (typeof window === 'undefined' ? '' : window.location.hash))
+  useEffect(() => {
+    const onHashChange = () => { setHash(window.location.hash); window.scrollTo({ top: 0, behavior: 'auto' }) }
+    window.addEventListener('hashchange', onHashChange)
+    return () => window.removeEventListener('hashchange', onHashChange)
+  }, [])
+  const project = hash.startsWith('#/projects/') ? routeProject() : null
+  return project ? <ProjectPage project={project} /> : <HomePage />
 }
