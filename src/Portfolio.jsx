@@ -38,7 +38,7 @@ function Navigation() {
   return (
     <header className="site-header">
       <div className="shell header-inner">
-        <a className="wordmark" href="#top" aria-label="Talha Alam home"><Mark compact /><span>talha<span className="wordmark-dot">.</span></span></a>
+        <a className="wordmark" href="#top" aria-label="Talha Alam home"><Mark compact /><span>talha alam<span className="wordmark-dot">.</span></span></a>
         <button className="menu-button" type="button" aria-expanded={open} aria-controls="primary-navigation" onClick={() => setOpen((value) => !value)}>{open ? 'Close' : 'Menu'}</button>
         <nav id="primary-navigation" className={open ? 'primary-nav is-open' : 'primary-nav'} aria-label="Primary navigation">
           {links.map(([id, label]) => <a href={`#${id}`} key={id} onClick={() => setOpen(false)}>{label}</a>)}
@@ -127,7 +127,7 @@ function Hero() {
   return (
     <section className="hero shell" id="top">
       <div className="hero-copy">
-        <div className="eyebrow"><span className="eyebrow-rule" />Independent engineer · Pakistan</div>
+        <div className="eyebrow"><span className="eyebrow-rule" />Talha Alam / Electronics engineer · Pakistan</div>
         <h1>{profile.headline}</h1>
         <p className="hero-subhead">{profile.subhead}</p>
         <div className="hero-actions"><a className="button button-primary" href="#work">See selected work <Arrow /></a><a className="button button-quiet" href="./Talha-Alam-Resume.pdf" download>Download CV <Arrow diagonal /></a></div>
@@ -186,6 +186,6 @@ function ContactSection() {
 
 export default function Portfolio() {
   return (
-    <div className="portfolio" id="portfolio"><a className="skip-link" href="#work">Skip to selected work</a><Navigation /><main><Hero /><div className="signal-strip"><div className="shell"><span>RTL DESIGN</span><span>LOW-PRECISION AI</span><span>FPGA SYSTEMS</span><span>RISC-V</span><span>RTL → GDSII</span></div></div><WorkSection /><ApproachSection /><ExperienceSection /><ResearchSection /><ContactSection /></main><footer className="site-footer"><div className="shell footer-inner"><a className="wordmark" href="#top"><Mark compact /><span>talha<span className="wordmark-dot">.</span></span></a><span>Designed around the work · © {new Date().getFullYear()}</span><a href="#top">Back to top ↑</a></div></footer></div>
+    <div className="portfolio" id="portfolio"><a className="skip-link" href="#work">Skip to selected work</a><Navigation /><main><Hero /><div className="signal-strip"><div className="shell"><span>RTL DESIGN</span><span>LOW-PRECISION AI</span><span>FPGA SYSTEMS</span><span>RISC-V</span><span>RTL → GDSII</span></div></div><WorkSection /><ApproachSection /><ExperienceSection /><ResearchSection /><ContactSection /></main><footer className="site-footer"><div className="shell footer-inner"><a className="wordmark" href="#top"><Mark compact /><span>talha alam<span className="wordmark-dot">.</span></span></a><span>Designed around the work · © {new Date().getFullYear()}</span><a href="#top">Back to top ↑</a></div></footer></div>
   )
 }

@@ -10,8 +10,8 @@
   --muted-dark: #64726d;
   --line: rgba(218, 231, 221, .16);
   --line-dark: rgba(21, 32, 32, .17);
-  --copper: #e9a36f;
-  --mint: #7fd6bc;
+  --copper: #c7794a;
+  --mint: #9ab9ad;
   --serif: 'Space Grotesk', 'DM Sans', Arial, sans-serif;
   --mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
 }
@@ -36,18 +36,18 @@
 .header-link svg { width: 13px; height: 13px; }
 .menu-button { display: none; margin-left: auto; padding: 8px 0; border: 0; background: transparent; }
 
-.hero { display: grid; min-height: 700px; grid-template-columns: minmax(0, 1.05fr) minmax(420px, .95fr); align-items: center; gap: 60px; padding-block: 76px 86px; }
+.hero { display: grid; min-height: 660px; grid-template-columns: minmax(0, 1.12fr) minmax(390px, .82fr); align-items: center; gap: clamp(40px, 7vw, 96px); padding-block: 74px 78px; }
 .hero-copy { position: relative; z-index: 1; padding-block: 24px; }
 .eyebrow, .section-label { display: flex; align-items: center; gap: 10px; color: var(--copper); font-family: var(--mono); font-size: 11px; letter-spacing: .13em; line-height: 1.5; text-transform: uppercase; }
 .eyebrow-rule { display: inline-block; width: 30px; height: 1px; background: var(--copper); }
-.hero h1 { max-width: 740px; margin: 25px 0 24px; color: var(--paper); font-family: var(--serif); font-size: clamp(52px, 7vw, 102px); font-weight: 500; letter-spacing: -.075em; line-height: .96; }
+.hero h1 { max-width: 680px; margin: 25px 0 24px; color: var(--paper); font-family: var(--serif); font-size: clamp(52px, 6.3vw, 88px); font-weight: 500; letter-spacing: -.075em; line-height: .96; }
 .hero-subhead { max-width: 560px; margin: 0; color: var(--muted); font-size: 18px; line-height: 1.6; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 36px; }
 .button { display: inline-flex; align-items: center; gap: 18px; min-height: 48px; padding: 0 18px; border: 1px solid transparent; font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; transition: transform .2s ease, background .2s ease, border-color .2s ease; }
 .button svg, .case-button svg, .text-link svg, .email-link svg, .header-link svg { width: 15px; height: 15px; flex: 0 0 auto; }
 .button:hover { transform: translateY(-2px); }
 .button-primary { color: var(--ink); background: var(--copper); }
-.button-primary:hover { background: #f2b17f; }
+.button-primary:hover { background: #d99564; }
 .button-quiet { color: var(--paper); border-color: var(--line); }
 .button-quiet:hover { border-color: rgba(233, 163, 111, .65); background: rgba(233, 163, 111, .08); }
 .hero-status { display: flex; align-items: center; gap: 10px; margin-top: 28px; color: var(--muted); font-family: var(--mono); font-size: 11px; }
@@ -56,12 +56,12 @@
 .proof-grid div { display: flex; flex-direction: column; gap: 6px; }
 .proof-grid strong { color: var(--paper); font-family: var(--serif); font-size: 18px; font-weight: 500; letter-spacing: -.03em; }
 .proof-grid span { color: var(--muted-dark); font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
-.hero-visual { min-width: 0; }
+.hero-visual { min-width: 0; width: min(100%, 560px); justify-self: end; }
 
-.chip-scene { position: relative; min-height: 540px; overflow: hidden; border: 1px solid var(--line); background: radial-gradient(circle at 58% 44%, rgba(127, 214, 188, .08), transparent 44%), linear-gradient(145deg, rgba(233, 163, 111, .04), rgba(14, 31, 32, .12)); }
+.chip-scene { position: relative; aspect-ratio: 1.08 / 1; min-height: 0; overflow: hidden; border: 1px solid rgba(218, 231, 221, .22); background: radial-gradient(circle at 57% 44%, rgba(110, 196, 172, .08), transparent 46%), linear-gradient(145deg, rgba(199, 121, 74, .035), rgba(14, 31, 32, .12)); box-shadow: 0 28px 80px rgba(0, 0, 0, .16); }
 .chip-scene::before, .chip-scene::after { position: absolute; z-index: 0; display: block; content: ''; pointer-events: none; }
-.chip-scene::before { inset: 0; background-image: linear-gradient(rgba(127, 214, 188, .07) 1px, transparent 1px), linear-gradient(90deg, rgba(127, 214, 188, .07) 1px, transparent 1px); background-size: 48px 48px; mask-image: linear-gradient(to bottom, transparent, black 24%, black 75%, transparent); }
-.chip-scene::after { top: 28px; right: 28px; width: 44px; height: 44px; border-top: 1px solid var(--copper); border-right: 1px solid var(--copper); }
+.chip-scene::before { inset: 0; background-image: linear-gradient(rgba(127, 214, 188, .045) 1px, transparent 1px), linear-gradient(90deg, rgba(127, 214, 188, .045) 1px, transparent 1px); background-size: 64px 64px; mask-image: linear-gradient(to bottom, transparent, black 24%, black 75%, transparent); }
+.chip-scene::after { top: 26px; right: 26px; width: 38px; height: 38px; border-top: 1px solid var(--copper); border-right: 1px solid var(--copper); }
 .chip-scene-canvas, .chip-fallback { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; }
 .chip-fallback { display: grid; place-items: center; opacity: .5; transition: opacity .35s ease; }
 .chip-fallback svg { width: 88%; height: auto; overflow: visible; }
@@ -69,8 +69,8 @@
 .chip-fallback svg rect:not(:first-child) { fill: var(--mint); stroke: none; opacity: .46; }
 .chip-scene-canvas canvas { display: block; width: 100%; height: 100%; }
 .chip-scene:has(canvas) .chip-fallback { opacity: .08; }
-.chip-scene-caption { position: absolute; right: 22px; bottom: 20px; left: 22px; z-index: 2; display: flex; justify-content: space-between; color: var(--muted); font-family: var(--mono); font-size: 10px; letter-spacing: .12em; }
-.scene-toggle { position: absolute; top: 19px; left: 19px; z-index: 3; padding: 8px 10px; border: 1px solid var(--line); color: var(--paper); background: rgba(11, 18, 19, .64); font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
+.chip-scene-caption { position: absolute; right: 22px; bottom: 20px; left: 22px; z-index: 2; display: flex; justify-content: space-between; color: var(--muted); font-family: var(--mono); font-size: 9px; letter-spacing: .11em; }
+.scene-toggle { position: absolute; top: 20px; right: 20px; z-index: 3; padding: 3px 0 5px; border: 0; border-bottom: 1px solid rgba(218, 231, 221, .35); color: var(--paper); background: transparent; font-family: var(--mono); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
 .scene-toggle:hover { border-color: var(--copper); }
 
 .signal-strip { border-block: 1px solid var(--line); color: var(--muted); background: var(--ink-soft); }
@@ -188,7 +188,7 @@
 .publication-bottom { display: flex; justify-content: space-between; gap: 20px; margin-top: 17px; }
 .publication-bottom small { color: var(--muted-dark); font-family: var(--mono); font-size: 10px; letter-spacing: .04em; }
 .text-link { display: inline-flex; align-items: center; gap: 8px; color: var(--copper); font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
-.text-link:hover { color: #f2b17f; }
+.text-link:hover { color: #d99564; }
 .text-link svg { width: 13px; height: 13px; }
 .talk-card { padding: 30px; border: 1px solid var(--line-dark); background: rgba(255, 255, 255, .2); }
 .talk-rule { width: 100%; height: 1px; margin: 23px 0 24px; background: var(--line-dark); }
@@ -244,7 +244,7 @@
   .hero { min-height: auto; grid-template-columns: 1fr; gap: 45px; padding-block: 72px 68px; }
   .hero h1 { max-width: 680px; }
   .hero-visual { max-width: 660px; width: 100%; margin-inline: auto; }
-  .chip-scene { min-height: 475px; }
+  .chip-scene { aspect-ratio: 1.08 / 1; min-height: 0; }
   .section-heading { grid-template-columns: 1fr; gap: 23px; }
   .section-heading > p { max-width: 570px; }
   .work-card-lead { grid-template-columns: 1fr; }
@@ -272,7 +272,7 @@
   .proof-grid { gap: 8px; margin-top: 38px; }
   .proof-grid strong { font-size: 15px; }
   .proof-grid span { font-size: 8px; }
-  .chip-scene { min-height: 360px; }
+  .chip-scene { aspect-ratio: 1.08 / 1; min-height: 0; }
   .chip-scene-caption { right: 13px; bottom: 13px; left: 13px; font-size: 8px; }
   .signal-strip .shell { gap: 18px; padding-block: 14px; }
   .section { padding-block: 86px; }
